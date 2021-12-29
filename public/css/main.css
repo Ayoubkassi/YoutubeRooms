@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+:root{
+  --percent : 0%;
+  --main : black;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  margin-top: 50px;
+  position: relative;
+  font-family: 'Open Sans Condensed', sans-serif;
+  width: 100vw;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+#headshot {
+
+}
+
+
+#player{
+  margin:30px 0px;
+  /* position: absolute;
+  top: 50%;
+  left : 48%;
+  transform: translate(-50%,10%);
+  position: relative; */
+
+}
+
+.container{
+}
+
+
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+button{
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #5a396b;
+  color: white;
+  /* border: 1px solid white; */
+  outline: none;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  float: left;
+  border-radius: 3px;
+  border :1px solid var(--main);
+
+}
+
+button:hover{
+  border :1px solid var(--main);
+  background: white;
+  color : #5a396b;
+  transition: 0.6s all ease;
+}
+
+
+
+.control{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 640px;
+  /* position: absolute;
+  bottom : 100px;
+  left : 150px; */
+}
+
+.control .line{
+  height: 4px;
+  width: 400px;
+  background: white;
+  position: relative;
+  cursor: pointer;
+}
+
+.control .line::after{
+  content : '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 50%;
+  left: var(--percent);
+  background: black;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  transition: 0.2s all ease;
+}
+
+.zido {
+  display: flex;
+  align-items: center;
+}
+
+.zido .up{
+  background-color: white;
+  padding: 5px 0;
+  color: black;
+  border-radius: 50%;
+  width: 32px;
+  height: 30px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.zido .down{
+  margin-right: 10px;
+  background-color: white;
+  padding: 5px 0;
+  color: black;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.raw{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 49vw;
+}
+
+.containo{
+  margin-top: 40px;
+}

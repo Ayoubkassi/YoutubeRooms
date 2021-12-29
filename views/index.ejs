@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Watch Youtube With Socket</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="icon"  href="so.png" />
+
+
+  </head>
+
+  <body style="background-color : #29252b;color : white;">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/" >Home</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="app">Application</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="main">
+
+      <h1 style="margin-top:12px;margin-bottom: 16px;">Watch Youtube With Your Friends</h1>
+      <div class="raw">
+      <div class="mb-3">
+        <input type="text" style="width:300px" class="form-control" id="vidId" placeholder="Enter YouTube Video Id ">
+      </div>
+      <button class="btn btn-primary" id="switch" style="height:38px;background-color:#5a396b!important;border:none!important">Switch Video</button>
+    </div>
+    <div id="player" id="video" ></div>
+
+      <div class="control">
+          <button type="button" id="play" class="mycontrol">Start</button>
+          <button type="button" id="pause" class="mycontrol">Stop</button>
+
+          <div class="zido">
+              <div class="down">-10s</div>
+              <div class="line"></div>
+              <div class="up">+10s</div>
+          </div>
+    </div>
+  </div>
+
+    <!-- <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '360',
+          width: '640',
+          videoId: 'BTFWu21-arc',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+// 5. The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+var done = false;
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    //setTimeout(stopVideo, 6000);
+    done = true;
+  }
+}
+function stopVideo() {
+  player.stopVideo();
+}
+
+function pauseVideo(){
+  player.pauseVideo();
+}
+
+
+
+
+let control = document.querySelector('.mycontrol');
+let root  = document.querySelector(":root");
+let line = document.querySelector(".line");
+let down = document.querySelector(".down");
+let up = document.querySelector(".up");
+let i =0;
+
+control.addEventListener("click",(e)=>{
+  if(i%2 == 0){
+        e.target.innerText = "Stop";
+        player.playVideo();
+        i++;
+      }
+    else{
+      e.target.innerText = "Play";
+      pauseVideo();
+      i++;
+    }
+});
+
+const videDuration = () => player.getDuration();
+const currentTime = () => player.getCurrentTime()
+
+const printTime = ()=>{
+  setInterval(()=>{
+    rightTime = (currentTime()/videDuration())*100;
+    //console.log(rightTime);
+    root.style.setProperty("--percent",`${rightTime.toString()}%`);
+    return rightTime;
+  },1000);
+
+};
+
+printTime();
+
+
+const changeVideoTime = (seconds) => {
+    player.seekTo(currentTime()+seconds,true);
+}
+
+up.addEventListener("click",()=>{
+  console.log("up");
+  changeVideoTime(10);
+});
+
+down.addEventListener("click",()=>{
+  console.log("down");
+  changeVideoTime(-10);
+});
+
+
+
+
+    </script> -->
+
+
+
+   <script>
+     // 2. This code loads the IFrame Player API code asynchronously.
+     var tag = document.createElement('script');
+     let i = 0;
+
+     tag.src = "https://www.youtube.com/iframe_api";
+     var firstScriptTag = document.getElementsByTagName('script')[0];
+     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+     // 3. This function creates an <iframe> (and YouTube player)
+     //    after the API code downloads.
+     let src = 'Ru8s5qjMKdU';
+     var player;
+     function onYouTubeIframeAPIReady() {
+       player = new YT.Player('player', {
+         height: '360',
+         width: '640',
+         videoId: src,
+         events: {
+           'onReady': onPlayerReady,
+           'onStateChange': onPlayerStateChange
+         }
+       });
+     }
+
+     // 4. The API will call this function when the video player is ready.
+     function onPlayerReady(event) {
+       event.target.playVideo();
+
+     }
+
+
+
+     // 5. The API calls this function when the player's state changes.
+     //    The function indicates that when playing a video (state=1),
+     //    the player should play for six seconds and then stop.
+     var done = false;
+     function onPlayerStateChange(event) {
+       if (event.data == YT.PlayerState.PLAYING && !done) {
+         //setTimeout(stopVideo, 6000);
+         done = true;
+
+
+       }
+     }
+
+    // let switchBut = document.getElementById("switch");
+    // let vidId = document.getElementById("vidId");
+
+
+
+     function pauseVideo() {
+       player.pauseVideo();
+     }
+
+     function stopVideo() {
+       player.stopVideo();
+     }
+
+     function playVideo() {
+       player.playVideo();
+     }
+
+     function seekTo(seconds){
+       player.seekTo(seconds);
+     }
+
+
+     const changeVideoTime = (seconds) => {
+         player.seekTo(player.getCurrentTime()+seconds,true);
+     }
+
+    let changeVideo = (id) => {
+      player.loadVideoById(id);
+
+    }
+     // switchBut.addEventListener('click',(e)=>{
+     //   e.preventDefault();
+     //   player.loadVideoById(vidId.value);
+     //
+     //   console.log(player);
+     //
+     // })
+
+
+
+
+
+
+
+
+
+
+   </script>
+
+
+   <script src="/socket.io/socket.io.js"></script>
+      <script>
+       var socket = io();
+       let playBut = document.getElementById("play");
+       let pauseBut = document.getElementById("pause");
+       let down = document.querySelector(".down");
+       let up = document.querySelector(".up");
+       let switchBut = document.getElementById("switch");
+       let vidId = document.getElementById("vidId");
+
+       playBut.addEventListener('click',(e)=>{
+         mydata = {state : 'play',time:player.getCurrentTime()};
+         socket.emit("event",mydata);
+       });
+
+      switchBut.addEventListener('click',(e)=>{
+            mydata = {state : 'change', source : vidId.value};
+            socket.emit("event",mydata);
+      });
+
+
+       pauseBut.addEventListener('click',(e)=>{
+         mydata = {state : 'pause',time:player.getCurrentTime()};
+         socket.emit("event",mydata);
+       });
+
+       up.addEventListener("click",()=>{
+         mydata = {state : '+10s',time:player.getCurrentTime()};
+         socket.emit("event",mydata);
+       });
+
+       down.addEventListener("click",()=>{
+         mydata = {state : '-10s',time:player.getCurrentTime()};
+         socket.emit("event",mydata);
+       });
+
+
+
+  </script>
+
+  <script>
+  var socket = io();
+
+  socket.on('event',function(msg){
+    console.log(msg);
+    if(msg.state == 'play'){
+      if(Math.abs(msg.time - player.getCurrentTime()) > 1){
+        seekTo(msg.time);
+      }
+      playVideo();
+    }else if(msg.state == 'pause'){
+      pauseVideo();
+    }else if(msg.state == '+10s'){
+      changeVideoTime(10);
+      if(Math.abs(msg.time - player.getCurrentTime()) > 1){
+            seekTo(msg.time);
+      }
+    }else if(msg.state == '-10s'){
+      changeVideoTime(-10);
+      if(Math.abs(msg.time - player.getCurrentTime()) > 1){
+            seekTo(msg.time);
+      }
+
+    }else if(msg.state = 'change'){
+      changeVideo(msg.source);
+    }
+  });
+
+  </script>
+
+  <!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+
+  </body>
+</html>
