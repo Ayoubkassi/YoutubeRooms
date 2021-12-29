@@ -52,23 +52,20 @@ body {
 button{
   display: inline-block;
   padding: 12px 25px;
-  background-color: #5a396b;
+  background-color: var(--main);
   color: white;
-  /* border: 1px solid white; */
+  border: 1px solid white;
   outline: none;
   font-weight: bold;
   font-size: 18px;
   cursor: pointer;
   float: left;
-  border-radius: 3px;
-  border :1px solid var(--main);
-
 }
 
 button:hover{
   border :1px solid var(--main);
   background: white;
-  color : #5a396b;
+  color : var(--main);
   transition: 0.6s all ease;
 }
 
