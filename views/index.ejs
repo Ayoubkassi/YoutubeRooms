@@ -66,108 +66,7 @@
     </div>
   </div>
 
-    <!-- <script>
-      // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
 
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          height: '360',
-          width: '640',
-          videoId: 'BTFWu21-arc',
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-
-      function onPlayerReady(event) {
-  event.target.playVideo();
-}
-
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-var done = false;
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
-    //setTimeout(stopVideo, 6000);
-    done = true;
-  }
-}
-function stopVideo() {
-  player.stopVideo();
-}
-
-function pauseVideo(){
-  player.pauseVideo();
-}
-
-
-
-
-let control = document.querySelector('.mycontrol');
-let root  = document.querySelector(":root");
-let line = document.querySelector(".line");
-let down = document.querySelector(".down");
-let up = document.querySelector(".up");
-let i =0;
-
-control.addEventListener("click",(e)=>{
-  if(i%2 == 0){
-        e.target.innerText = "Stop";
-        player.playVideo();
-        i++;
-      }
-    else{
-      e.target.innerText = "Play";
-      pauseVideo();
-      i++;
-    }
-});
-
-const videDuration = () => player.getDuration();
-const currentTime = () => player.getCurrentTime()
-
-const printTime = ()=>{
-  setInterval(()=>{
-    rightTime = (currentTime()/videDuration())*100;
-    //console.log(rightTime);
-    root.style.setProperty("--percent",`${rightTime.toString()}%`);
-    return rightTime;
-  },1000);
-
-};
-
-printTime();
-
-
-const changeVideoTime = (seconds) => {
-    player.seekTo(currentTime()+seconds,true);
-}
-
-up.addEventListener("click",()=>{
-  console.log("up");
-  changeVideoTime(10);
-});
-
-down.addEventListener("click",()=>{
-  console.log("down");
-  changeVideoTime(-10);
-});
-
-
-
-
-    </script> -->
 
 
 
@@ -270,6 +169,8 @@ down.addEventListener("click",()=>{
 
    <script src="/socket.io/socket.io.js"></script>
       <script>
+
+
        var socket = io();
        let playBut = document.getElementById("play");
        let pauseBut = document.getElementById("pause");
@@ -310,6 +211,8 @@ down.addEventListener("click",()=>{
 
   <script>
   var socket = io();
+
+
 
   socket.on('event',function(msg){
     console.log(msg);

@@ -19,9 +19,7 @@ app.set('view engine', 'ejs')
 app.get('/', (req, res) => res.render('welcome'))
 app.get('/app', (req, res) => res.render('index'))
 
-app.get('/about',function(req,res) {
-  res.sendFile('about.html');
-});
+app.get('/about',(req,res) => res.render('about'))
 
 io.on('connection', (socket) => {
   socket.on('event', function(msg){
